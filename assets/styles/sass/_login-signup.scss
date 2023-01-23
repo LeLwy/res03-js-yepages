@@ -1,0 +1,25 @@
+#login-signup-page{
+    
+    &>main{
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        &>section{
+            
+            &>h2{
+                
+                font-size: 3rem;
+                font-weight: bold;
+            }
+            
+            &>form{
+                
+                &>fieldset{
+                    
+                    margin: 2vh 2vw;
+                }
+            }
+        }
+    }
+}

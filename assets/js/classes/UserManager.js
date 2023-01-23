@@ -102,6 +102,31 @@ class UserManager{
         }
     }
     
+    login(email, password){
+        
+        let validUser = false
+        
+        for(let i=0; i<this.#users.length; i++){
+            
+            if(email === this.#users[i].email && password === this.#users[i].password){
+                
+                validUser = true;
+                break;
+            }
+            
+        }
+        
+        if(validUser){
+            
+            alert(`Bienvenue ${this.#users[i].username}`);
+            
+        }else{
+            
+            alert("Mange tes grands morts !");
+        }
+    }
+    
+    
     save(){
         
         sessionStorage.setItem("storedUsers", JSON.stringify(this.#users));
