@@ -7,11 +7,11 @@
         <link rel="stylesheet" href="assets/styles/css/style.css" />
         <title>Bouquins</title>
     </head>
-    <body id="homepage">
+    <body id="login-signup-page">
         <main>
-            <section>
-                <h2>Formulaire de connexion</h2>
-                <form method="POST">
+            <section id="connection">
+                <h2>Formulaire de connexion:</h2>
+                <form method="POST" id="connection-form">
                     <fieldset>
                         <label for="user-email">Email:</label>
                         <input type="email" id="user-email" name="email">
@@ -21,42 +21,42 @@
                         <input type="password" id="user-password" name="password">
                     </fieldset>
                     <fieldset>
-                        <input type="submit" value="Connexion">
+                        <button type="submit">Se connecter</button>
                     </fieldset>
                 </form>
             </section>
-            <section>
-                <h2>Formulaire d'inscription</h2>
-                <form method="POST">
+            <section id="inscription">
+                <h2>Formulaire d'inscription:</h2>
+                <form method="POST" id="inscription-form">
                     <fieldset>
-                        <label for="user-name">Votre nom d'utilisateur:</label>
-                        <input type="text" id="user-name" name="name">
+                        <label for="new-username">Votre nom d'utilisateur:</label>
+                        <input type="text" id="new-username" name="name">
                     </fieldset>
                     <fieldset>
-                        <label for="user-email">Email:</label>
-                        <input type="email" id="user-email" name="email">
+                        <label for="new-user-email">Email:</label>
+                        <input type="email" id="new-user-email" name="email">
                     </fieldset>
                     <fieldset>
-                        <label for="user-password">Mot de passe:</label>
-                        <input type="password" id="user-password" name="password">
+                        <label for="new-user-password">Mot de passe:</label>
+                        <input type="password" id="new-user-password" name="password">
                     </fieldset>
                     <fieldset>
-                        <label for="confirm-user-password">Confirmation du mot de passe:</label>
-                        <input type="password" id="confirm-user-password" name="confirm-password">
+                        <label for="confirm-new-user-password">Confirmation du mot de passe:</label>
+                        <input type="password" id="confirm-new-user-password" name="confirm-password">
                     </fieldset>
                     <fieldset>
-                        <label for="user-firstname">Votre prénom:</label>
-                        <input type="text" id="user-firstname" name="firstname">
+                        <label for="new-user-firstname">Votre prénom:</label>
+                        <input type="text" id="new-user-firstname" name="firstname">
                     </fieldset>
                     <fieldset>
-                        <label for="user-lastname">Votre nom:</label>
-                        <input type="text" id="user-lastname" name="lastname">
+                        <label for="new-user-lastname">Votre nom:</label>
+                        <input type="text" id="new-user-lastname" name="lastname">
                     </fieldset>
-                    <fieldset><label for="user-avatar">Choisissez une photo de profil:</label>
-                    <input type="file" id="user-avatar" name="avatar" accept="image/png, image/jpeg">
+                    <fieldset><label for="new-user-avatar">Choisissez une photo de profil:</label>
+                    <input type="file" id="new-user-avatar" name="avatar" accept="image/png, image/jpeg">
                     </fieldset>
                     <fieldset>
-                        <input type="submit" value="Inscription">
+                        <button type="submit">S'inscrire</button>
                     </fieldset>
                 </form>
             </section>
