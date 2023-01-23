@@ -73,7 +73,26 @@ class UserManager{
     
     createUser(user){
         
-        this.#users.push(user);
+        let validEmail = true;
+        
+        for(let i=0; i<this.#users.length; i++){
+            
+            if(user.email === this.#users[i].email){
+                
+                validEmail = false;
+                break;
+
+            }
+        }
+        
+        if(validEmail){
+            
+            this.#users.push(user);
+            
+        }else{
+            
+            alert("Cette adresse mail est déjà utilisée");
+        }
     }
     
     deleteUser(userId){
@@ -112,18 +131,20 @@ class UserManager{
                 
                 validUser = true;
                 break;
+                
             }
             
         }
         
         if(validUser){
             
-            alert(`Bienvenue ${this.#users[i].username}`);
+            alert(`Bienvenue !`);
             
         }else{
             
             alert("Mange tes grands morts !");
         }
+        
     }
     
     

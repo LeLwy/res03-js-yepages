@@ -1,0 +1,267 @@
+#admin-users{
+    display: grid;
+    grid-template-rows: 0.1fr 0.9fr;
+    width: 100vw;
+    height: 100vh;
+    
+    &>header{
+        
+        display: grid;
+        grid-template-columns: 0.25fr 0.75fr;
+        
+        &>section{
+            
+            display: grid;
+            grid-template-columns: 0.2fr 0.2fr 0.6fr;
+            padding: 0.5rem;
+            border-right: none;
+            border-bottom: 1px solid black;
+            
+            &>button{
+                
+                font-size: 3rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+            
+            &>figure{
+                
+                grid-column: 3 / 4;
+            }
+        }
+        
+        &>nav{
+            
+            
+            border-bottom: 1px solid var(--black);
+        }
+    }
+    
+    &>main{
+        
+        display: grid;
+        grid-template-columns: 0.25fr 0.75fr;
+            
+        &>aside{
+            
+            border-right: 1px solid var(--black);
+            padding: 5rem 1rem;
+            
+            &>nav{
+                
+                &>h2{
+                    
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin: 1rem 0;
+                    cursor: pointer;
+                }
+                
+                &>ul{
+                    
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    
+                    &>li{
+
+                        margin: 0.5rem 0;
+                        
+                        &>a{
+                            
+                            color: var(--black);
+                            text-decoration: none;
+                            
+                            &:hover{
+                                
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        &>section{
+
+            grid-column: 2 / 3;
+            padding: 2rem;
+            
+            &>h2{
+
+                font-size: 2rem;
+                text-transform: uppercase;
+                color: #0077b6;
+                font-weight: 700;
+                margin-bottom: 4rem;
+            }
+            
+            &>section{
+                
+                &:first-of-type{
+                    
+                    &>#add-btn{
+                        
+                        background-color: #023E8A;
+                        color: white;
+                        padding: 0.7rem 1.2rem;
+                        font-size: 1.2rem;
+                        border: none;
+                        border-radius: 0.2rem;
+                        box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                        cursor: pointer;
+                    }
+                }
+                
+                &#users-data{
+                    
+                    &>table{
+                        
+                        margin-top: 4rem;
+                        width: 100%;
+                        
+                        &>thead{
+                            
+                            &>tr{
+                                
+                                font-weight: 500;
+                                font-size: 1.3rem;
+                                line-height: 4rem;
+                                text-align: left;
+                            }
+                        }
+                        
+                        &>tbody{
+                            
+                            &>tr{
+                                
+                                font-size: 1.2rem;
+                                line-height: 2.5rem;
+                                
+                                &:not(:last-of-type){
+                                    
+                                    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                                }
+                                
+                                &>td{
+                                    
+                                    &:nth-of-type(4){
+                                        
+                                        font-size: 1.5rem;
+                                    }
+                                    
+                                    &:last-of-type{
+                                        
+                                        font-size: 1.4rem;
+                                        
+                                        &>a{
+                                        
+                                            &:last-of-type{
+                                        
+                                                color: var(--darkCornFlowerBlue);
+                                            }
+                                            
+                                            &>span{
+                                                
+                                                &.bi-eye::before {
+                                                    content: "\f341";
+                                                }
+                                                
+                                                &.bi-pen::before {
+                                                    content: "\f4c8";
+                                                }
+                                            }
+                                        }
+                                        
+                                        &>button{
+                                            
+                                            background: none;
+                                            color: #b50604;
+                                            border: none;
+                                            font-size: 1.5rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &#delete-modal{
+                
+                background-color: rgba(0, 0, 0, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                &.d-none{
+                    
+                    display: none;
+                }
+                
+                &>#confirm-delete{
+                    
+                    height: 30%;
+                    width: 50%;
+                    background-color: white;
+                    border-radius: 0.2rem;
+                    padding: 2rem 1rem;
+                    border: 2px solid #b50604;
+                    box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                    
+                    &>h3{
+                        
+                        text-align: center;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        margin-bottom: 2rem;
+                        margin-top: 2rem;
+                    }
+                    
+                    &>h4{
+                        
+                        text-align: center;
+                        font-size: 1.4rem;
+                        margin-bottom: 4rem;
+                    }
+                    
+                    &>#modal-btns{
+                        
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        
+                        &>button{
+                        
+                            font-size: 1.3rem;
+                            padding: 1rem 2rem;
+                            margin: 0 0.5rem;
+                            
+                            &#modal-cancel-btn{
+                            
+                                background-color: transparent;
+                                color: black;
+                                border: 2px solid black;
+                                border-radius: 0.3rem;
+                            }
+                            
+                            &#modal-delete-btn{
+                                
+                                background-color: #b50604;
+                                color: white;
+                                border: 2px solid #b50604;
+                                border-radius: 0.3rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
