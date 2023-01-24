@@ -111,12 +111,52 @@ class UserManager{
         
         this.#users = updatedUsersList;
     }
+    
+    confirmDeleteModal(){
+        
+        let confirmBtn = document.getElementById("modal-delete-btn");
+        let usersDataSection = document.getElementById("users-list");
+        let deleteModal = document.getElementById("delete-modal");
+        let delBtns = document.querySelectorAll("body#admin-users > main > section > section#users-data > table > tbody > tr > td:last-of-type > button");
+        
+        let confirm = false;
+        let that = this;
+        
+        
+        confirmBtn.addEventListener("click", function(){
+           
+            confirm = true;
+            
+            if(confirm){
+                
+               for(let i=0; i<delBtns.length; i++){
+                 
+                    let userId = parseInt(delBtns[i].getAttribute("data-user"));
+                    let usersList = document.getElementById("users-list");
+                    let deleteModal = document.getElementById("delete-modal");
+                    console.log(userId);
+                    
+                    if(that.#users[i].id === userId){
+                        
+                        that.deleteUser(userId);
+                        that.save();
+                        that.load();
+                        window.location.reload();
+                        
+                        usersDataSection.classList.remove("d-none");
+                        deleteModal.classList.add("d-none");
+                    }
+                }
+            }
+        });
+        
+    }
 
-    cancelDeleteModale(){
+    cancelDeleteModal(){
         
         let cancelBtn = document.getElementById("modal-cancel-btn");
         let usersDataSection = document.getElementById("users-list");
-        let deleteModale = document.getElementById("delete-modal");
+        let deleteModal = document.getElementById("delete-modal");
         let confirmDeleteSection = document.getElementById("confirm-delete");
         
         cancelBtn.addEventListener("click", function(){
@@ -124,7 +164,7 @@ class UserManager{
             let delUserElement = document.getElementById("deleted-user-name");
             
             usersDataSection.classList.remove("d-none");
-            deleteModale.classList.add("d-none");
+            deleteModal.classList.add("d-none");
         });
     }
     
@@ -181,12 +221,6 @@ class UserManager{
             let user = new User(userParsed.id, userParsed.username, userParsed.email, userParsed.password, userParsed.firstName, userParsed.lastName, userParsed.profileImage);
             this.#users.push(user);
         }
-    }
-    
-    clearUsers(){
-        
-        let tableBody = document.querySelector("body#admin-users > main > section > section#users-data > table > tbody");
-            tableBody.innerHTML = "";
     }
     
     displayUsers(){

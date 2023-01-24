@@ -19,13 +19,16 @@ window.addEventListener("DOMContentLoaded", function(){
     for(let i=0; i<delBtns.length; i++){
         
         delBtns[i].addEventListener("click", function(){
-     
-            let userId = parseInt(delBtns[i].getAttribute("data-user"));
-            console.log(userId);
-            users.deleteUser(userId);
-            users.clearUsers();
-            users.load();
-            users.displayUsers();
+            
+            let usersList = document.getElementById("users-list");
+            let deleteModal = document.getElementById("delete-modal");
+            
+            usersList.classList.add("d-none");
+            deleteModal.classList.remove("d-none");
+            
+            
+            users.cancelDeleteModal();
+            users.confirmDeleteModal();
         })
     }
 });
