@@ -119,6 +119,11 @@ body#admin-users{
                         border-radius: 0.2rem;
                         box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
                         cursor: pointer;
+                        
+                        &>a{
+                            color: white;
+                            text-decoration: none;
+                        }
                     }
                 }
                 

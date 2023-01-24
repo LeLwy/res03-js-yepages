@@ -99,73 +99,57 @@ class UserManager{
     
     deleteUser(userId){
         
-        let updatedUsersList = [];
-        
-        for(let i=0; i<this.#users.length; i++){
-            
-            if(this.#users[i].id !== userId){
-                
-                updatedUsersList.push(this.#users[i]);
-            }
-        }
-        
-        this.#users = updatedUsersList;
-    }
-    
-    confirmDeleteModal(){
+        this.displayDeleteModal();
         
         let confirmBtn = document.getElementById("modal-delete-btn");
-        let usersDataSection = document.getElementById("users-list");
-        let deleteModal = document.getElementById("delete-modal");
-        let delBtns = document.querySelectorAll("body#admin-users > main > section > section#users-data > table > tbody > tr > td:last-of-type > button");
-        
-        let confirm = false;
         let that = this;
         
-        
         confirmBtn.addEventListener("click", function(){
-           
-            confirm = true;
             
-            if(confirm){
+            let usersList = document.getElementById("users-list");
+            let deleteModal = document.getElementById("delete-modal");
+            
+            let updatedUsersList = [];
+            
+            for(let i=0; i<that.#users.length; i++){
                 
-               for(let i=0; i<delBtns.length; i++){
-                 
-                    let userId = parseInt(delBtns[i].getAttribute("data-user"));
-                    let usersList = document.getElementById("users-list");
-                    let deleteModal = document.getElementById("delete-modal");
-                    console.log(userId);
+                if(that.#users[i].id !== userId){
                     
-                    if(that.#users[i].id === userId){
-                        
-                        that.deleteUser(userId);
-                        that.save();
-                        that.load();
-                        window.location.reload();
-                        
-                        usersDataSection.classList.remove("d-none");
-                        deleteModal.classList.add("d-none");
-                    }
+                    updatedUsersList.push(that.#users[i]);
                 }
             }
+            
+            that.#users = updatedUsersList;
+            
+            that.save();
+            that.load();
+            window.location.reload();
+        
+            usersList.classList.remove("d-none");
+            deleteModal.classList.add("d-none");
+            
         });
         
-    }
-
-    cancelDeleteModal(){
-        
         let cancelBtn = document.getElementById("modal-cancel-btn");
-        let usersDataSection = document.getElementById("users-list");
-        let deleteModal = document.getElementById("delete-modal");
-        let confirmDeleteSection = document.getElementById("confirm-delete");
         
         cancelBtn.addEventListener("click", function(){
             
-            let delUserElement = document.getElementById("deleted-user-name");
-            
-            usersDataSection.classList.remove("d-none");
+            let usersList = document.getElementById("users-list");
+            let deleteModal = document.getElementById("delete-modal");
+        
+            usersList.classList.remove("d-none");
             deleteModal.classList.add("d-none");
         });
+    }
+    
+    displayDeleteModal(){
+            
+        let usersList = document.getElementById("users-list");
+        let deleteModal = document.getElementById("delete-modal");
+        
+        usersList.classList.add("d-none");
+        deleteModal.classList.remove("d-none");
+        
     }
     
     editUser(user){

@@ -178,6 +178,10 @@ body#admin-users > main > section > section:first-of-type > #add-btn {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
+body#admin-users > main > section > section:first-of-type > #add-btn > a {
+  color: white;
+  text-decoration: none;
+}
 body#admin-users > main > section > section#users-data > table {
   margin-top: 4rem;
   width: 100%;

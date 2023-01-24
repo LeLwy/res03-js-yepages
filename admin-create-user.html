@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/styles/css/style.css" />
+        <title>Bouquins</title>
+    </head>
+    <body id="admin-create-user">
+        <main>
+            <section id="inscription">
+                <h2>Créer un utilisateur:</h2>
+                <form method="POST" id="create-form">
+                    <fieldset>
+                        <label for="new-username">Votre nom d'utilisateur:</label>
+                        <input type="text" id="new-username" name="name">
+                    </fieldset>
+                    <fieldset>
+                        <label for="new-user-email">Email:</label>
+                        <input type="email" id="new-user-email" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <label for="new-user-password">Mot de passe:</label>
+                        <input type="password" id="new-user-password" name="password">
+                    </fieldset>
+                    <fieldset>
+                        <label for="confirm-new-user-password">Confirmation du mot de passe:</label>
+                        <input type="password" id="confirm-new-user-password" name="confirm-password">
+                    </fieldset>
+                    <fieldset>
+                        <label for="new-user-firstname">Votre prénom:</label>
+                        <input type="text" id="new-user-firstname" name="firstname">
+                    </fieldset>
+                    <fieldset>
+                        <label for="new-user-lastname">Votre nom:</label>
+                        <input type="text" id="new-user-lastname" name="lastname">
+                    </fieldset>
+                    <fieldset><label for="new-user-avatar">Choisissez une photo de profil:</label>
+                    <input type="file" id="new-user-avatar" name="avatar" accept="image/png, image/jpeg">
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit">S'inscrire</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+        <script type="module" src="assets/js/admin-create-user.js"></script>
+    </body>
+</html>

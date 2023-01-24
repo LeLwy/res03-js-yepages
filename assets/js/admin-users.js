@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", function(){
     
     users.load();
     
-    console.log(users);
     
     showMenu();
     showAside();
@@ -20,15 +19,9 @@ window.addEventListener("DOMContentLoaded", function(){
         
         delBtns[i].addEventListener("click", function(){
             
-            let usersList = document.getElementById("users-list");
-            let deleteModal = document.getElementById("delete-modal");
+            let userId = parseInt(delBtns[i].getAttribute("data-user"));
+            users.deleteUser(userId);
             
-            usersList.classList.add("d-none");
-            deleteModal.classList.remove("d-none");
-            
-            
-            users.cancelDeleteModal();
-            users.confirmDeleteModal();
-        })
+        });
     }
 });
