@@ -3,17 +3,7 @@ import { Book } from './classes/Book.js';
 import { UserManager } from './classes/UserManager.js';
 import { BookManager } from './classes/BookManager.js';
 
-import { showMenu } from './functions.js';
-import { showAside } from './functions.js';
-import { displayUsers } from './functions.js';
-import { delUser } from './functions.js';
-import { cancelDeleteModale } from './functions.js';
-
 window.addEventListener("DOMContentLoaded", function(){
-    
-    showMenu();
-    showAside();
-    displayUsers(users);
     
     let users = new UserManager([]);
     
@@ -70,5 +60,7 @@ window.addEventListener("DOMContentLoaded", function(){
             
             alert("Les mots de passe doivent être identiques");
         }
+        
+        users.save();
     });
 });

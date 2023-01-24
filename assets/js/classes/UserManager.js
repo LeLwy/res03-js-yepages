@@ -1,3 +1,5 @@
+import { User } from './User.js';
+
 class UserManager{
     
     #users;
@@ -109,6 +111,22 @@ class UserManager{
         
         this.#users = updatedUsersList;
     }
+
+    cancelDeleteModale(){
+        
+        let cancelBtn = document.getElementById("modal-cancel-btn");
+        let usersDataSection = document.getElementById("users-list");
+        let deleteModale = document.getElementById("delete-modal");
+        let confirmDeleteSection = document.getElementById("confirm-delete");
+        
+        cancelBtn.addEventListener("click", function(){
+            
+            let delUserElement = document.getElementById("deleted-user-name");
+            
+            usersDataSection.classList.remove("d-none");
+            deleteModale.classList.add("d-none");
+        });
+    }
     
     editUser(user){
         
@@ -150,24 +168,99 @@ class UserManager{
     
     save(){
         
-        sessionStorage.setItem("storedUsers", JSON.stringify(this.#users));
+        localStorage.setItem("storedUsers", JSON.stringify(this.#users));
     }
     
     load(){
         
-        let newUsers = JSON.parse(sessionStorage.getItem("storedUsers"));
-        let newUsersList = [];
+        let newUsers = JSON.parse(localStorage.getItem("storedUsers"));
         
-        for(let i=0; i<newUsersList.length; i++){
+        for(let i=0; i<newUsers.length; i++){
             
-            let userParsed = JSON.parse(newUsersList[i]);
+            let userParsed = JSON.parse(newUsers[i]);
             let user = new User(userParsed.id, userParsed.username, userParsed.email, userParsed.password, userParsed.firstName, userParsed.lastName, userParsed.profileImage);
-            newUsersList.push(user);
+            this.#users.push(user);
         }
-        
-        this.#users = newUsersList;
     }
     
+    clearUsers(){
+        
+        let tableBody = document.querySelector("body#admin-users > main > section > section#users-data > table > tbody");
+            tableBody.innerHTML = "";
+    }
+    
+    displayUsers(){
+    
+        let tableBody = document.querySelector("body#admin-users > main > section > section#users-data > table > tbody");
+        
+        for(let i=0; i<this.users.length; i++){
+            
+            let tr = document.createElement("tr");
+            
+            let tdId = document.createElement("td");
+            let id = document.createTextNode(this.users[i].id);
+            tdId.appendChild(id);
+            
+            let tdName = document.createElement("td");
+            let username = document.createTextNode(this.users[i].username);
+            tdName.appendChild(username);
+            
+            let tdEmail = document.createElement("td");
+            let email = document.createTextNode(this.users[i].email);
+            tdEmail.appendChild(email);
+            
+            let tdStatus = document.createElement("td");
+            let statusSpan = document.createElement("span");
+            
+            if(this.users[i].isActive === true){
+                
+                statusSpan.classList.add("bi-person-fill-up");
+                statusSpan.setAttribute("aria-labelledby", "Actif");
+                
+            }else{
+                
+                statusSpan.classList.add("bi-person-fill-down");
+                statusSpan.setAttribute("aria-labelledby", "Inactif");
+            }
+            
+            tdStatus.appendChild(statusSpan);
+            
+            let tdAction = document.createElement("td");
+            
+            let viewLink = document.createElement("a");
+            viewLink.setAttribute("href", "#");
+            let viewSpan = document.createElement("span");
+            viewSpan.classList.add("bi-eye");
+            viewSpan.setAttribute("aria-labelledby", "Voir l'utilisateur");
+            viewLink.appendChild(viewSpan);
+            
+            let editLink = document.createElement("a");
+            editLink.setAttribute("href", "#");
+            let editSpan = document.createElement("span");
+            editSpan.classList.add("bi-pen");
+            editSpan.setAttribute("aria-labelledby", "Modifier l'utilisateur");
+            editLink.appendChild(editSpan)
+            
+            let delButton = document.createElement("button");
+            let delSpan = document.createElement("span");
+            delSpan.classList.add("bi-trash3");
+            delSpan.setAttribute("aria-labelledby", "Supprimer l'utilisateur");
+            delButton.appendChild(delSpan);
+            delButton.setAttribute("data-user", this.users[i].id);
+            
+            tdAction.appendChild(viewLink);
+            tdAction.appendChild(editLink);
+            tdAction.appendChild(delButton);
+            
+            tr.appendChild(tdId);
+            tr.appendChild(tdName);
+            tr.appendChild(tdEmail);
+            tr.appendChild(tdStatus);
+            tr.appendChild(tdAction);
+            
+            tableBody.appendChild(tr);
+        }
+    }
 }
 
 export { UserManager };
